@@ -12,7 +12,6 @@ def main():
     """Run main function."""
     challenge_page_link = CHALL_LINK
     raw_html = pychallenge_common.get_page_content(challenge_page_link)
-    print(raw_html)
 
     if raw_html:
         commented_text = pychallenge_common.get_text_in_comments(raw_html)
