@@ -46,7 +46,7 @@ def main():
         sys.exit()
 
     next_url = get_next_url(challenge_url, keyword)
-    file_path = pychallenge_common.download_file(next_url, "banner.p")
+    file_path = pychallenge_common.download_file(next_url)
     unpickled_object = unpickle_file(file_path)
     draw_symbol_picture(unpickled_object)
 

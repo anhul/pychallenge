@@ -1,5 +1,6 @@
 """Common functions used in python challenges"""
 
+import os
 import requests
 from bs4 import BeautifulSoup, Comment
 
@@ -19,11 +20,13 @@ def get_page_content(url, params=None):
     except requests.exceptions.RequestException:
         return None
 
-def download_file(url, filename):
+def download_file(url, filename=None):
     """Download file from the url and save in the location specified by filename"""
     try:
         resp = requests.get(url)
         if is_response_ok(resp):
+            if filename is None:
+                filename = os.path.basename(url)
             with open(filename, "wb") as f:
                 f.write(resp.content)
             return filename
@@ -58,6 +61,12 @@ def get_next_challenge(keyword):
     chall_link_pattern = CHALL_LINK_PATTERN
 
     return chall_link_pattern.format(keyword=keyword)
+
+def replace_file_ext(filepath, new_ext):
+    """Replace file extension"""
+    f_name, _ = os.path.splitext(filepath)
+
+    return f"{f_name}.{new_ext}"
 
 
 
