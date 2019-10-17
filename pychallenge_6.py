@@ -3,6 +3,8 @@
 import re
 import zipfile
 import pychallenge_common
+import os
+import shutil
 
 CHALL_URL = "http://www.pythonchallenge.com/pc/def/channel.html"
 
@@ -40,6 +42,11 @@ def get_next_nothing(text):
     return None
 
 
+def clean_up_data():
+    os.remove("channel.zip")
+    shutil.rmtree(".\data")
+
+
 def main():
     """Run main function."""
     next_url = pychallenge_common.replace_file_ext(CHALL_URL, "zip")
@@ -49,6 +56,7 @@ def main():
 
     next_challenge = pychallenge_common.get_next_challenge("hockey")
     print(next_challenge)
+    clean_up_data()
 
     return next_challenge
 
