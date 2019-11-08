@@ -44,7 +44,7 @@ def get_next_nothing(text):
 
 def clean_up_data():
     os.remove("channel.zip")
-    shutil.rmtree(".\data")
+    shutil.rmtree("./data")
 
 
 def main():
