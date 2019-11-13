@@ -1,5 +1,6 @@
 """Python challenge number 2."""
 #!/usr/local/bin/python3
+import logging
 from collections import Counter
 
 import requests
@@ -7,6 +8,11 @@ from bs4 import BeautifulSoup, Comment
 import pychallenge_common
 
 CHALL_LINK = "http://www.pythonchallenge.com/pc/def/ocr.html"
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+print(id(logger))
+#
+logger.debug("Logger ID {}".format(id(logger)))
 
 def get_rare_characters(text, rate=1):
     """
@@ -20,8 +26,9 @@ def get_rare_characters(text, rate=1):
     return [char for char, count in chars_rate.items() if count <= rate]
 
 
-def execute():
+def execute(logger=None):
     """Run main function."""
+
     challenge_page_link = CHALL_LINK
     raw_html = pychallenge_common.get_page_content(challenge_page_link)
 
@@ -35,5 +42,5 @@ def execute():
     return None
 
 
-if __name__ == "__main__":
-    print(execute())
+# if __name__ == "__main__":
+#     print(execute())

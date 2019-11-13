@@ -1,6 +1,6 @@
 import os
 import re
-import logging
+from configs import configure_logger, LOGGER_NAME
 from importlib import import_module
 
 CHALL_REGEX = "pychallenge_\d.py$"
@@ -49,32 +49,11 @@ class ChallengeExecutor:
         pass
 
 
-def configure_logger():
-
-    logger = logging.getLogger('pychallenge_executor')
-    logger.setLevel(logging.DEBUG)
-    # fh = logging.FileHandler('spam.log')
-    # fh.setLevel(logging.DEBUG)
-    # create console handler with a higher log level
-    ch = logging.StreamHandler()
-    ch.setLevel(logging.DEBUG)
-    # create formatter and add it to the handlers
-    formatter = logging.Formatter(
-        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    # fh.setFormatter(formatter)
-    ch.setFormatter(formatter)
-    # add the handlers to the logger
-    # logger.addHandler(fh)
-    logger.addHandler(ch)
-
-    return logger
-
-
 if __name__=="__main__":
-    logger = configure_logger()
-    logger.info("Start of application")
+    logger = configure_logger(LOGGER_NAME)
+    logger.info("Challenge executor is created")
+    logger.debug("Logger id is {}".format(id(logger)))
     executor = ChallengeExecutor('./')
     challenges = executor.get_all()
-    print(challenges)
     next_link = executor.run(2)
-    print(next_link)
+    logger.info(next_link)
