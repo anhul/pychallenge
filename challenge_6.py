@@ -2,7 +2,7 @@
 
 import re
 import zipfile
-import pychallenge_common
+from utils import common
 import os
 import shutil
 
@@ -49,12 +49,12 @@ def clean_up_data():
 
 def main():
     """Run main function."""
-    next_url = pychallenge_common.replace_file_ext(CHALL_URL, "zip")
-    file_path = pychallenge_common.download_file(next_url)
+    next_url = common.replace_file_ext(CHALL_URL, "zip")
+    file_path = common.download_file(next_url)
     destination = "./data"
     extract_zip(file_path, destination)
 
-    next_challenge = pychallenge_common.get_next_challenge("hockey")
+    next_challenge = common.get_next_challenge("hockey")
     print(next_challenge)
     clean_up_data()
 

@@ -2,7 +2,7 @@
 import os
 import pickle
 from bs4 import BeautifulSoup
-import pychallenge_common
+from utils import common
 
 CHALL_URL = "http://www.pythonchallenge.com/pc/def/peak.html"
 
@@ -38,7 +38,7 @@ def draw_symbol_picture(picture_schema):
 def main():
     """Run main function."""
     challenge_url = CHALL_URL
-    page_text = pychallenge_common.get_page_content(challenge_url)
+    page_text = common.get_page_content(challenge_url)
     if page_text:
         keyword = get_hidden_keyword(page_text)
     else:
@@ -46,11 +46,11 @@ def main():
         sys.exit()
 
     next_url = get_next_url(challenge_url, keyword)
-    file_path = pychallenge_common.download_file(next_url)
+    file_path = common.download_file(next_url)
     unpickled_object = unpickle_file(file_path)
     draw_symbol_picture(unpickled_object)
 
-    next_challenge = pychallenge_common.get_next_challenge("channel")
+    next_challenge = common.get_next_challenge("channel")
     print(next_challenge)
 
     return next_challenge

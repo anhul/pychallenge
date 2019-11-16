@@ -3,7 +3,7 @@
 import os
 import re
 from bs4 import BeautifulSoup
-import pychallenge_common
+from utils import common
 
 CHALL_LINK = "http://www.pythonchallenge.com/pc/def/linkedlist.html"
 
@@ -32,7 +32,7 @@ def main():
     f_name, _ = os.path.splitext(challenge_page_link)
     challenge_page_link = f_name + ".php"
 
-    raw_html = pychallenge_common.get_page_content(challenge_page_link)
+    raw_html = common.get_page_content(challenge_page_link)
     if raw_html:
         nothing = get_first_nothing(raw_html)
         if nothing:
@@ -42,7 +42,7 @@ def main():
 
             for i in range(400):
 
-                next_response = pychallenge_common.get_page_content(challenge_page_link, url_params)
+                next_response = common.get_page_content(challenge_page_link, url_params)
                 prev_nothing = next_nothing
                 next_nothing = get_next_nothing(next_response)
 
