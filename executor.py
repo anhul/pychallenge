@@ -87,5 +87,5 @@ class ChallengeExecutor:
 if __name__=="__main__":
 
     executor = ChallengeExecutor('./')
-    # next_link = executor.run(7)
-    executor.generate_files(1,"http://www.pythonchallenge.com/pc/def/274877906944.html")
+    next_link = executor.run(7)
+    # executor.generate_files(7,"http://www.pythonchallenge.com/pc/def/oxygen.html")

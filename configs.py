@@ -6,7 +6,7 @@ ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 LOG_DIR = os.path.join(ROOT_DIR, "logs")
 LOG_LEVEL = logging.DEBUG
-LOG_FORMAT = "'%(asctime)s %(name)s %(levelname)s %(module)s:%(lineno)d - %(message)s'"
+LOG_FORMAT = "'%(asctime)s %(levelname)s:%(name)s:%(lineno)d - %(message)s'"
 LOG_NAME_BASE = "pychallenge_"
 
 CH_SRC_TEMP = os.path.join(ROOT_DIR, "utils", "challenge_n.txt")
